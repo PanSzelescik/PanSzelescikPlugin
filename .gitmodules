@@ -1,0 +1,3 @@
+[submodule "purpurpacks"]
+	path = purpurpacks
+	url = https://github.com/PurpurMC/PurpurPacks.git

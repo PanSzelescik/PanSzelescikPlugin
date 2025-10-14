@@ -27,6 +27,19 @@ tasks {
     }
 }
 
+tasks.register('purpurpacks-re_dye', Copy) {
+    from 'purpurpacks/packs/crafting/re_dye'
+    into 'src/main/resources/purpurpacks/crafting/re_dye'
+    exclude 'modrinth.json', 'version_info.txt'
+}
+
+tasks.register('purpurpacks-blasting_smelts_glass', Copy) {
+    from 'purpurpacks/packs/crafting/smelting/blasting_smelts_glass'
+    into 'src/main/resources/purpurpacks/crafting/smelting/blasting_smelts_glass'
+    exclude 'modrinth.json', 'version_info.txt'
+}
+
+
 def targetJavaVersion = 21
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
@@ -46,6 +59,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 processResources {
+    dependsOn 'purpurpacks-re_dye'
+    dependsOn 'purpurpacks-blasting_smelts_glass'
     def props = [version: version]
     inputs.properties props
     filteringCharset 'UTF-8'
