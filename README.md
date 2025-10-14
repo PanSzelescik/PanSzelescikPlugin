@@ -1,2 +1,2 @@
 # PanSzelescikPlugin
-Paper Plugin for mc.panszelescik.pl Minecraft serber
+Paper Plugin for mc.panszelescik.pl Minecraft server
