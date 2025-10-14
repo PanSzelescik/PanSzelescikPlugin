@@ -21,7 +21,8 @@ public final class PanSzelescikBootstrap implements PluginBootstrap {
             "crafting_re_dye_glass", "/purpurpacks/crafting/re_dye/glass",
             "crafting_re_dye_glazed_terracotta", "/purpurpacks/crafting/re_dye/glazed_terracotta",
             "crafting_re_dye_terracotta", "/purpurpacks/crafting/re_dye/terracotta",
-            "crafting_smelting_blasting_smelts_glass", "/purpurpacks/crafting/smelting/blasting_smelts_glass"
+            "crafting_smelting_blasting_smelts_glass", "/purpurpacks/crafting/smelting/blasting_smelts_glass",
+            "effective_tools_pickaxe_glass", "/purpurpacks/effective_tools/pickaxe_glass"
     );
 
     @Override
