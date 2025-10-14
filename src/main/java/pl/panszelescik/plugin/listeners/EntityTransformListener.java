@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTransformEvent;
 import pl.panszelescik.plugin.PanSzelescikPlugin;
+import pl.panszelescik.plugin.utils.ComponentUtils;
 
 public final class EntityTransformListener implements Listener {
 
@@ -31,11 +32,7 @@ public final class EntityTransformListener implements Listener {
                                 .append(Component.text(", level: "))
                                 .append(Component.text(villager.getVillagerLevel(), NamedTextColor.AQUA))
                                 .append(Component.text(") at: "))
-                                .append(Component.text(zombieVillager.getLocation().getBlockX(), NamedTextColor.GREEN))
-                                .append(Component.text(", "))
-                                .append(Component.text(zombieVillager.getLocation().getBlockY(), NamedTextColor.GREEN))
-                                .append(Component.text(", "))
-                                .append(Component.text(zombieVillager.getLocation().getBlockZ(), NamedTextColor.GREEN))
+                                .append(ComponentUtils.location(zombieVillager.getLocation()))
                                 .append(Component.text(" was infected into a Zombie Villager."));
 
                         Bukkit.broadcast(message);
@@ -50,11 +47,7 @@ public final class EntityTransformListener implements Listener {
                     .map(entity -> (Villager) entity)
                     .forEach(villager -> {
                         var message = Component.text("Zombie Villager at: ")
-                                .append(Component.text(zombieVillager.getLocation().getBlockX(), NamedTextColor.GREEN))
-                                .append(Component.text(", "))
-                                .append(Component.text(zombieVillager.getLocation().getBlockY(), NamedTextColor.GREEN))
-                                .append(Component.text(", "))
-                                .append(Component.text(zombieVillager.getLocation().getBlockZ(), NamedTextColor.GREEN))
+                                .append(ComponentUtils.location(zombieVillager.getLocation()))
                                 .append(Component.text(" was cured into a Villager ("))
                                 .append(Component.text(villager.getProfession().key().asMinimalString(), NamedTextColor.GOLD))
                                 .append(Component.text(", level: "))
