@@ -1,0 +1,4 @@
+name: PanSzelescikPlugin
+version: '1.0.0'
+main: pl.panszelescik.plugin.PanSzelescikPlugin
+api-version: '1.21'
