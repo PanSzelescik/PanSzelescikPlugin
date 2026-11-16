@@ -4,7 +4,8 @@ plugins {
 }
 
 group = 'pl.panszelescik'
-version = '1.1.0'
+// Releases build with -PreleaseVersion=<tag> (see .github/workflows/build.yml), so the jar matches the tag.
+version = findProperty('releaseVersion') ?: '1.1.0'
 
 repositories {
     mavenCentral()
