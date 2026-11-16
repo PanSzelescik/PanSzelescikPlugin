@@ -3,10 +3,19 @@ name: Build
 on:
   push:
   pull_request:
+  # Publishing a GitHub release builds the plugin with the tag as its version and attaches the jar to the
+  # release, so servers can download it (e.g. ReleaseWatcher's mcpkg on the Minecraft server).
+  release:
+    types: [published]
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # upload the jar to the release
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,10 +32,18 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           cache-read-only: true
+      - name: Version from the release tag
+        if: github.event_name == 'release'
+        run: echo "RELEASE_VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build ${RELEASE_VERSION:+-PreleaseVersion=$RELEASE_VERSION}
       - name: Publish Paper
         uses: actions/upload-artifact@v4
         with:
           name: Paper
           path: build/libs/
+      - name: Attach the jar to the release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "$GITHUB_REF_NAME" "build/libs/PanSzelescikPlugin-$RELEASE_VERSION.jar" --clobber

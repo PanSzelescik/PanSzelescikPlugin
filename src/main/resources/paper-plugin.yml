@@ -1,6 +1,6 @@
 name: PanSzelescikPlugin
 author: PanSzelescik
-version: '1.1.0'
+version: '${version}'
 api-version: '1.21'
 bootstrapper: pl.panszelescik.plugin.PanSzelescikBootstrap
 main: pl.panszelescik.plugin.PanSzelescikPlugin
